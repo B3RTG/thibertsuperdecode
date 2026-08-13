@@ -1,0 +1,12 @@
+{
+  // Cloudflare: despliegue de sitio estático (solo assets, sin código de Worker).
+  // Evita la auto-configuración del plugin de Vite (que exige Vite >= 6).
+  "name": "thibertsuperdecode",
+  "compatibility_date": "2025-01-01",
+  "assets": {
+    "directory": "./dist",
+    // Sirve index.html en rutas desconocidas (inofensivo hoy; útil si algún
+    // día se añade enrutado en cliente).
+    "not_found_handling": "single-page-application"
+  }
+}
