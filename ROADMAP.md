@@ -1,0 +1,42 @@
+# Roadmap — ThiBert Superdecoder
+
+Estado actual: **Fases 1, 2 y 3 completas** (ver [README](README.md)). Este documento
+recoge mejoras propuestas para próximas versiones. No hay ninguna comprometida;
+son ideas priorizadas de mayor a menor valor / esfuerzo razonable.
+
+## Próximas versiones (ideas)
+
+### Jugabilidad
+- [ ] **Modo contrarreloj real**: cuenta atrás configurable que provoca derrota al llegar a 0 (hoy el cronómetro solo mide).
+- [ ] **Dar pista / rendirse**: revelar una casilla a cambio de penalización, o abandonar la ronda.
+- [ ] **Deshacer última casilla** antes de comprobar.
+- [ ] **Semilla compartible**: reproducir un código concreto por código/seed para retar a otra persona.
+- [ ] **Escalado de dificultad más rico**: activar repeticiones y/o alargar el código en niveles altos, no solo añadir colores.
+
+### Accesibilidad e i18n
+- [ ] **Internacionalización (i18n)**: los textos ya están centralizados en `constants.js`; extraer a diccionarios por idioma (ES/EN).
+- [ ] **Patrones/íconos por color** además del color (daltonismo) — hoy hay `aria-label`, falta señal visual no cromática.
+- [ ] Revisión de contraste AA en todos los temas (el tema claro, si se añade, necesita repaso).
+
+### Temas y visual
+- [ ] **Tema claro** y respeto de `prefers-color-scheme`.
+- [ ] Más temas y/o editor de tema.
+- [ ] Pulido de animaciones (transición entre filas, entrada del overlay).
+
+### Datos y persistencia
+- [ ] **Historial de partidas** y gráfica de progreso.
+- [ ] **Exportar/importar** estadísticas (JSON).
+- [ ] Estadísticas separadas por modo (fácil/avanzado) y por longitud de código.
+
+### Sonido
+- [ ] Ajuste de **volumen** (hoy solo silencio on/off).
+- [ ] Guiño "Morse" opcional al comprobar (mencionado en la spec §12).
+
+### Técnico / calidad
+- [ ] **Tests de componentes** (React Testing Library) además de los de `engine`/`reducer`.
+- [ ] **PWA**: instalable y jugable offline (manifest + service worker).
+- [ ] CI en GitHub Actions: `npm test` + `npm run build` en cada push/PR.
+- [ ] Migrar la lógica a **TypeScript** (la spec lo recomienda; hoy es JS con las formas de datos de la §8).
+
+### Multijugador
+- [ ] Online / por turnos remoto (fuera del alcance v1, requeriría backend).
