@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { formatDuration } from '../game/format.js';
-import { TEXTS } from '../game/constants.js';
+import { useTexts } from '../i18n/LanguageContext.jsx';
 
 // Phase 3: live elapsed-time readout for the current round. Ticks while
 // playing, freezes on won/lost showing the final time.
 export default function Timer({ state }) {
+  const t = useTexts().board;
   const { phase, roundStartedAt, lastRoundMs } = state;
   const [nowMs, setNowMs] = useState(() => perfNow());
 
@@ -23,7 +24,7 @@ export default function Timer({ state }) {
 
   return (
     <div className="level-display__item" style={{ alignItems: 'flex-end' }}>
-      <span className="level-display__label">{TEXTS.board.time}</span>
+      <span className="level-display__label">{t.time}</span>
       <span className="level-display__value" style={{ fontSize: '1.1rem' }}>
         {formatDuration(ms)}
       </span>

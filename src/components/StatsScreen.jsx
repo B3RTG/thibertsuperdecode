@@ -1,10 +1,10 @@
 import { actions } from '../game/reducer.js';
-import { TEXTS } from '../game/constants.js';
+import { useTexts } from '../i18n/LanguageContext.jsx';
 import { formatDuration } from '../game/format.js';
 
 // Phase 3: 1-player statistics screen.
 export default function StatsScreen({ state, dispatch, onBack }) {
-  const t = TEXTS.stats;
+  const t = useTexts().stats;
   const s = state.stats;
   const winRate = s.played ? Math.round((s.won / s.played) * 100) : 0;
 

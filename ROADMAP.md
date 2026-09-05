@@ -14,7 +14,8 @@ son ideas priorizadas de mayor a menor valor / esfuerzo razonable.
 - [ ] **Escalado de dificultad más rico**: activar repeticiones y/o alargar el código en niveles altos, no solo añadir colores.
 
 ### Accesibilidad e i18n
-- [ ] **Internacionalización (i18n)**: los textos ya están centralizados en `constants.js`; extraer a diccionarios por idioma (ES/EN).
+- [x] **Internacionalización (ES/EN)** — diccionarios en `src/i18n/`, selector en Ajustes, persistido; `useTexts()` en los componentes.
+- [ ] Más idiomas (estructura ya lista: añadir una entrada a `TRANSLATIONS`).
 - [ ] **Patrones/íconos por color** además del color (daltonismo) — hoy hay `aria-label`, falta señal visual no cromática.
 - [ ] Revisión de contraste AA en todos los temas (el tema claro, si se añade, necesita repaso).
 

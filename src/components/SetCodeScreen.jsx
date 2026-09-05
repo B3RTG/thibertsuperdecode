@@ -1,12 +1,12 @@
 import PegSlot from './PegSlot.jsx';
 import ColorPalette from './ColorPalette.jsx';
 import { actions } from '../game/reducer.js';
-import { TEXTS } from '../game/constants.js';
+import { useTexts } from '../i18n/LanguageContext.jsx';
 
 // Duo: Player 1 defines the secret in a masked entry (spec section 6.2).
 // The pegs never reveal their color to keep it hidden from Player 2.
 export default function SetCodeScreen({ state, dispatch }) {
-  const t = TEXTS.setCode;
+  const t = useTexts().setCode;
   const { codeLength, activePeg } = state;
   const draft = state.guesses[0];
   const pegs = draft?.pegs ?? new Array(codeLength).fill(null);

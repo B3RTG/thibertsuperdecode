@@ -1,9 +1,9 @@
-import { TEXTS } from '../game/constants.js';
+import { useTexts } from '../i18n/LanguageContext.jsx';
 
 // Renders hints. Easy → per-position marks; advanced → aggregated counts.
 // (spec section 4). Receives mode + feedback and decides its render.
 export default function Feedback({ feedback, mode, codeLength }) {
-  const h = TEXTS.hints;
+  const h = useTexts().hints;
   if (!feedback) return null;
 
   if (mode === 'advanced') {
@@ -30,7 +30,7 @@ export default function Feedback({ feedback, mode, codeLength }) {
     <div
       className="feedback feedback--easy feedback--under"
       role="list"
-      aria-label="Pistas por posición"
+      aria-label={h.perPositionLabel}
     >
       {Array.from({ length: codeLength }).map((_, i) => {
         const mark = marks[i] || 'none';
@@ -40,7 +40,7 @@ export default function Feedback({ feedback, mode, codeLength }) {
             key={i}
             role="listitem"
             className={`feedback__dot feedback__dot--${mark}`}
-            aria-label={`Posición ${i + 1}: ${text}`}
+            aria-label={h.positionMark(i + 1, text)}
           />
         );
       })}

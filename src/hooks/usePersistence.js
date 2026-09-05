@@ -42,6 +42,7 @@ export function usePersistence(state, dispatch) {
       muted: state.muted,
       config: state.config,
       theme: state.theme,
+      lang: state.lang,
       stats: state.stats,
     };
     try {
@@ -55,6 +56,7 @@ export function usePersistence(state, dispatch) {
     state.muted,
     state.config,
     state.theme,
+    state.lang,
     state.stats,
   ]);
 }

@@ -1,4 +1,5 @@
-import { COLOR_CSS_VARS, COLOR_LABELS, TEXTS } from '../game/constants.js';
+import { COLOR_CSS_VARS } from '../game/constants.js';
+import { useTexts } from '../i18n/LanguageContext.jsx';
 
 // A single color slot (spec section 10). Presentation only — dispatches
 // SET_ACTIVE_PEG via onClick when interactive.
@@ -9,14 +10,15 @@ export default function PegSlot({
   readOnly = false,
   onClick,
 }) {
+  const T = useTexts();
   const filled = color != null;
   const style = filled && !masked ? { '--peg-color': `var(${COLOR_CSS_VARS[color]})` } : undefined;
 
   const label = masked
-    ? TEXTS.setCode.hidden
+    ? T.setCode.hidden
     : filled
-      ? COLOR_LABELS[color]
-      : TEXTS.board.emptyPeg;
+      ? T.colors[color]
+      : T.board.emptyPeg;
 
   const className = [
     'peg',

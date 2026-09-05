@@ -1,7 +1,8 @@
 import { useRef } from 'react';
 import { actions } from '../game/reducer.js';
-import { COLOR_CSS_VARS, COLOR_LABELS } from '../game/constants.js';
+import { COLOR_CSS_VARS } from '../game/constants.js';
 import { useSound } from '../hooks/useSound.js';
+import { useTexts } from '../i18n/LanguageContext.jsx';
 
 // Rotary controller input (spec sections 7 & 11.2). Unifies mouse/touch/pen
 // via Pointer Events. Only dispatches shared actions — no game logic.
@@ -15,6 +16,7 @@ const TAP_MAX_MOVE = 10; // px total movement still counted as a tap
 const LONG_PRESS_MS = 550;
 
 export default function Knob({ state, dispatch }) {
+  const T = useTexts();
   const sound = useSound();
   const knobRef = useRef(null);
   const drag = useRef(null);
@@ -116,13 +118,13 @@ export default function Knob({ state, dispatch }) {
 
   const notchColor =
     currentColor != null ? `var(${COLOR_CSS_VARS[currentColor]})` : 'var(--muted)';
-  const label = currentColor != null ? COLOR_LABELS[currentColor] : 'Vacío';
+  const label = currentColor != null ? T.colors[currentColor] : T.knob.empty;
 
   return (
     <div className="knob-wrap">
       <button
         className="knob-arrow"
-        aria-label="Color anterior"
+        aria-label={T.knob.prev}
         onClick={() => cycle(-1)}
       >
         −
@@ -132,7 +134,7 @@ export default function Knob({ state, dispatch }) {
         ref={knobRef}
         className="knob"
         role="slider"
-        aria-label={`Mando de color. Actual: ${label}`}
+        aria-label={T.knob.dialLabel(label)}
         aria-valuetext={label}
         tabIndex={0}
         onPointerDown={onPointerDown}
@@ -144,12 +146,12 @@ export default function Knob({ state, dispatch }) {
         <div className="knob__dial" style={{ transform: `rotate(${rotation}deg)` }}>
           <span className="knob__notch" style={{ background: notchColor }} />
         </div>
-        <span className="knob__hint">girar: color · tocar: casilla · mantener: ✓</span>
+        <span className="knob__hint">{T.knob.hint}</span>
       </div>
 
       <button
         className="knob-arrow"
-        aria-label="Color siguiente"
+        aria-label={T.knob.next}
         onClick={() => cycle(1)}
       >
         +

@@ -1,9 +1,10 @@
 import { actions } from '../game/reducer.js';
-import { TEXTS } from '../game/constants.js';
+import { useTexts } from '../i18n/LanguageContext.jsx';
 
 // Choose 1/2 players and difficulty, then start (spec section 6).
 export default function Menu({ state, dispatch, onOpenSettings, onOpenStats }) {
-  const t = TEXTS.menu;
+  const T = useTexts();
+  const t = T.menu;
   const { players, mode } = state;
 
   const choosePlayers = (p) => dispatch({ type: 'MENU_SET', players: p });
@@ -13,12 +14,12 @@ export default function Menu({ state, dispatch, onOpenSettings, onOpenStats }) {
   return (
     <div className="screen menu">
       <div>
-        <h1 className="menu__title">{TEXTS.appTitle}</h1>
+        <h1 className="menu__title">{T.appTitle}</h1>
         <p className="menu__subtitle">{t.subtitle}</p>
       </div>
 
       <div>
-        <div className="menu__section-label">Jugadores</div>
+        <div className="menu__section-label">{t.players}</div>
         <div className="choice-group">
           <button
             className="choice"
@@ -64,7 +65,7 @@ export default function Menu({ state, dispatch, onOpenSettings, onOpenStats }) {
         {t.settings}
       </button>
       <button className="btn btn--ghost btn--block" onClick={onOpenStats}>
-        {TEXTS.stats.open}
+        {T.stats.open}
       </button>
     </div>
   );

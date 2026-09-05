@@ -29,6 +29,10 @@ Implementa las **Fases 1, 2 y 3** de [`doc/super-decoder-especificaciones.md`](d
 - **Contrarreloj + estadísticas** — cronómetro por ronda en el `DeviceShell` (`Timer`), y pantalla de **Estadísticas** con partidas, ganadas/perdidas, % aciertos, racha, mejor racha, menos intentos y mejor tiempo (persistidas; solo 1 jugador). El overlay muestra el tiempo y avisa de "¡nuevo récord!".
 - **Temas de color** — Clásico, Neón, Ámbar y Menta, seleccionables en Ajustes y aplicados vía `data-theme` (los LEDs del código no cambian, por consistencia de juego). Persistido.
 
+## Idiomas (i18n)
+
+- **Español e inglés**, seleccionables en Ajustes y persistidos. Diccionarios en [src/i18n/translations.js](src/i18n/translations.js); los componentes leen los textos con `useTexts()` a través de `LanguageContext`. Añadir un idioma es agregar una entrada a `TRANSLATIONS` y a `LANGUAGES`.
+
 ## Scripts
 
 ```bash

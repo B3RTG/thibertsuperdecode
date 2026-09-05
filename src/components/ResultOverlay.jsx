@@ -1,11 +1,12 @@
 import PegSlot from './PegSlot.jsx';
 import { actions } from '../game/reducer.js';
-import { TEXTS } from '../game/constants.js';
+import { useTexts } from '../i18n/LanguageContext.jsx';
 import { formatDuration } from '../game/format.js';
 
 // Success / defeat overlay with the next action (spec section 10).
 export default function ResultOverlay({ state, dispatch }) {
-  const t = TEXTS.result;
+  const T = useTexts();
+  const t = T.result;
   const won = state.phase === 'won';
   const duo = state.players === 2;
 
@@ -26,7 +27,7 @@ export default function ResultOverlay({ state, dispatch }) {
         <h2 className="overlay__title">{won ? t.won : t.lost}</h2>
 
         {/* Reveal the secret now that the round is over */}
-        <div className="overlay__secret" aria-label="Código secreto">
+        <div className="overlay__secret" aria-label={t.secretLabel}>
           {state.secret.map((color, i) => (
             <PegSlot key={i} color={color} readOnly />
           ))}
@@ -34,8 +35,8 @@ export default function ResultOverlay({ state, dispatch }) {
 
         {showTime && (
           <p className="overlay__time">
-            {TEXTS.board.time}: {formatDuration(state.lastRoundMs)}
-            {isRecordTime && ' · ¡nuevo récord!'}
+            {T.board.time}: {formatDuration(state.lastRoundMs)}
+            {isRecordTime && ` · ${t.newRecord}`}
           </p>
         )}
 

@@ -1,10 +1,10 @@
 import { actions } from '../game/reducer.js';
-import { TEXTS } from '../game/constants.js';
+import { useTexts } from '../i18n/LanguageContext.jsx';
 
 // Action controls (spec section 10). "Comprobar" is always visible for
 // reliability on mobile (spec 11.2).
 export default function Controls({ state, dispatch }) {
-  const t = TEXTS.controls;
+  const t = useTexts().controls;
   const { guesses, activeRow, muted, config } = state;
   const rowComplete = guesses[activeRow]?.pegs.every((p) => p !== null);
   const toggleKnob = () =>

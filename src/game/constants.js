@@ -1,21 +1,18 @@
-// Central config: master palette, difficulty presets, and UI texts.
+// Central config: master palette and difficulty presets.
+// UI texts live in src/i18n/translations.js (multi-language).
 
 // Master palette — at least 8 colors (spec section 11). Each color maps to a
-// CSS variable defined in styles/tokens.css and carries an accessible label.
+// CSS variable defined in styles/tokens.css. Human-readable labels are in i18n.
 export const MASTER_PALETTE = [
-  { id: 'red', label: 'Rojo', cssVar: '--c-red' },
-  { id: 'orange', label: 'Naranja', cssVar: '--c-orange' },
-  { id: 'yellow', label: 'Amarillo', cssVar: '--c-yellow' },
-  { id: 'green', label: 'Verde', cssVar: '--c-green' },
-  { id: 'cyan', label: 'Cian', cssVar: '--c-cyan' },
-  { id: 'blue', label: 'Azul', cssVar: '--c-blue' },
-  { id: 'magenta', label: 'Magenta', cssVar: '--c-magenta' },
-  { id: 'white', label: 'Blanco', cssVar: '--c-white' },
+  { id: 'red', cssVar: '--c-red' },
+  { id: 'orange', cssVar: '--c-orange' },
+  { id: 'yellow', cssVar: '--c-yellow' },
+  { id: 'green', cssVar: '--c-green' },
+  { id: 'cyan', cssVar: '--c-cyan' },
+  { id: 'blue', cssVar: '--c-blue' },
+  { id: 'magenta', cssVar: '--c-magenta' },
+  { id: 'white', cssVar: '--c-white' },
 ];
-
-export const COLOR_LABELS = Object.fromEntries(
-  MASTER_PALETTE.map((c) => [c.id, c.label]),
-);
 
 export const COLOR_CSS_VARS = Object.fromEntries(
   MASTER_PALETTE.map((c) => [c.id, c.cssVar]),
@@ -84,87 +81,3 @@ export function resolveAllowRepeats(mode, config) {
   }
   return MODE_DEFAULTS[mode].allowRepeats;
 }
-
-// Centralized UI texts (leaves room for future i18n — spec section 1).
-export const TEXTS = {
-  appTitle: 'ThiBert Superdecoder',
-  menu: {
-    subtitle: 'Rompe el código de 4 colores',
-    onePlayer: '1 Jugador',
-    twoPlayers: '2 Jugadores',
-    chooseMode: 'Dificultad',
-    easy: 'Fácil',
-    advanced: 'Avanzado',
-    start: 'Empezar',
-    settings: 'Ajustes',
-  },
-  settings: {
-    title: 'Ajustes',
-    colorCount: 'Número de colores',
-    maxAttempts: 'Intentos',
-    codeLength: 'Longitud del código',
-    allowRepeats: 'Permitir repeticiones',
-    followMode: 'Según el modo',
-    scaleByLevel: 'Subir dificultad por nivel',
-    theme: 'Tema',
-    back: 'Volver',
-    note: 'Los cambios se aplican a la siguiente partida.',
-  },
-  stats: {
-    title: 'Estadísticas',
-    played: 'Partidas',
-    won: 'Ganadas',
-    lost: 'Perdidas',
-    winRate: '% aciertos',
-    streak: 'Racha',
-    bestStreak: 'Mejor racha',
-    bestAttempts: 'Menos intentos',
-    bestTime: 'Mejor tiempo',
-    none: '—',
-    reset: 'Borrar estadísticas',
-    back: 'Volver',
-    open: 'Estadísticas',
-  },
-  board: {
-    level: 'Nivel',
-    attemptsLeft: 'Intentos',
-    time: 'Tiempo',
-    emptyPeg: 'Casilla vacía',
-    activeRow: 'Fila activa',
-  },
-  setCode: {
-    title: 'Jugador 1: define el código',
-    hint: 'Elige 4 colores. El Jugador 2 no los verá.',
-    confirm: 'Confirmar código',
-    hidden: 'Oculto',
-  },
-  handoff: {
-    title: 'Pasa el dispositivo',
-    body: 'Entrega el dispositivo al Jugador 2 para que adivine.',
-    ready: 'Estoy listo',
-  },
-  controls: {
-    check: 'Comprobar',
-    reset: 'Reiniciar',
-    mute: 'Silencio',
-    unmute: 'Sonido',
-    menu: 'Menú',
-    hideKnob: 'Ocultar mando',
-    showKnob: 'Mostrar mando',
-  },
-  result: {
-    won: '¡Código roto!',
-    lost: 'Sin intentos',
-    nextLevel: 'Siguiente nivel',
-    retry: 'Reintentar nivel',
-    swapRoles: 'Intercambiar roles',
-    backToMenu: 'Menú principal',
-  },
-  hints: {
-    green: 'correcta',
-    white: 'presente',
-    none: 'ausente',
-    greensLabel: 'Verdes',
-    whitesLabel: 'Blancas',
-  },
-};

@@ -1,11 +1,12 @@
 import GuessRow from './GuessRow.jsx';
+import { useTexts } from '../i18n/LanguageContext.jsx';
 
 // The list of rows (spec section 10). Pure presentation from state.
 export default function Board({ state, dispatch }) {
   const { guesses, activeRow, phase } = state;
 
   return (
-    <div className="board" aria-label="Tablero de intentos">
+    <div className="board" aria-label={useTexts().board.boardLabel}>
       {guesses.map((guess, i) => {
         let status = 'future';
         if (i < activeRow) status = 'past';

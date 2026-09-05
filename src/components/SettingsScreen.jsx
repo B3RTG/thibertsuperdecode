@@ -1,10 +1,7 @@
 import { actions } from '../game/reducer.js';
-import {
-  TEXTS,
-  CONFIG_LIMITS,
-  resolveAllowRepeats,
-  THEMES,
-} from '../game/constants.js';
+import { CONFIG_LIMITS, resolveAllowRepeats, THEMES } from '../game/constants.js';
+import { LANGUAGES } from '../i18n/translations.js';
+import { useTexts } from '../i18n/LanguageContext.jsx';
 
 // Accent color per theme, so the swatch previews the theme (mirrors tokens.css).
 const THEME_ACCENTS = {
@@ -17,7 +14,8 @@ const THEME_ACCENTS = {
 // Runtime-configurable settings (spec section 3.1). Changes apply to the
 // next game and are persisted via usePersistence.
 export default function SettingsScreen({ state, dispatch, onBack }) {
-  const t = TEXTS.settings;
+  const T = useTexts();
+  const t = T.settings;
   const { config, mode } = state;
 
   const patch = (p) => dispatch(actions.updateConfig(p));
@@ -28,7 +26,7 @@ export default function SettingsScreen({ state, dispatch, onBack }) {
       <div className="stepper">
         <button
           className="stepper__btn"
-          aria-label={`Menos ${key}`}
+          aria-label={t.less(key)}
           disabled={config[key] <= min}
           onClick={() => patch({ [key]: Math.max(min, config[key] - 1) })}
         >
@@ -39,7 +37,7 @@ export default function SettingsScreen({ state, dispatch, onBack }) {
         </span>
         <button
           className="stepper__btn"
-          aria-label={`Más ${key}`}
+          aria-label={t.more(key)}
           disabled={config[key] >= max}
           onClick={() => patch({ [key]: Math.min(max, config[key] + 1) })}
         >
@@ -65,8 +63,8 @@ export default function SettingsScreen({ state, dispatch, onBack }) {
     config.allowRepeats == null
       ? t.followMode
       : config.allowRepeats
-        ? 'Sí'
-        : 'No';
+        ? T.yes
+        : T.no;
 
   return (
     <div className="screen menu">
@@ -102,25 +100,36 @@ export default function SettingsScreen({ state, dispatch, onBack }) {
             aria-pressed={config.scaleByLevel === true}
             onClick={() => patch({ scaleByLevel: !config.scaleByLevel })}
           >
-            {config.scaleByLevel ? 'Sí' : 'No'}
+            {config.scaleByLevel ? T.yes : T.no}
           </button>
         </div>
         <div className="settings__row">
           <span className="settings__label">{t.theme}</span>
-          <div
-            className="theme-swatches"
-            role="group"
-            aria-label={t.theme}
-          >
+          <div className="theme-swatches" role="group" aria-label={t.theme}>
             {THEMES.map((th) => (
               <button
                 key={th.id}
                 className="theme-swatch"
                 style={{ '--theme-accent': THEME_ACCENTS[th.id] }}
-                aria-label={th.label}
+                aria-label={T.themes[th.id]}
                 aria-pressed={state.theme === th.id}
                 onClick={() => dispatch(actions.setTheme(th.id))}
               />
+            ))}
+          </div>
+        </div>
+        <div className="settings__row">
+          <span className="settings__label">{t.language}</span>
+          <div className="choice-group" role="group" aria-label={t.language}>
+            {LANGUAGES.map((lng) => (
+              <button
+                key={lng.id}
+                className="toggle"
+                aria-pressed={state.lang === lng.id}
+                onClick={() => dispatch(actions.setLang(lng.id))}
+              >
+                {lng.label}
+              </button>
             ))}
           </div>
         </div>
@@ -128,8 +137,7 @@ export default function SettingsScreen({ state, dispatch, onBack }) {
 
       {repeatsConflict && (
         <p className="settings__note" style={{ color: 'var(--c-red)' }}>
-          Con {config.colorCount} colores y código de {config.codeLength}, no se
-          pueden evitar repeticiones. Se forzarán repeticiones en la partida.
+          {t.repeatsConflict(config.colorCount, config.codeLength)}
         </p>
       )}
 
