@@ -23,7 +23,7 @@ export default function Hub({ onSelect, onOpenSettings }) {
               onClick={() => onSelect(g.id)}
             >
               <span className="game-card__icon" aria-hidden="true">
-                {g.icon}
+                {g.Icon ? <g.Icon /> : g.icon}
               </span>
               <span className="game-card__name">{info.name}</span>
               <span className="game-card__desc">{info.desc}</span>
