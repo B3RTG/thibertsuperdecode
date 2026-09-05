@@ -185,6 +185,40 @@
   min-height: 52px;
 }
 
+/* ---- Apaga las luces (Lights Out) ---- */
+.luces {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-top: clamp(0.5rem, 3vh, 1.5rem);
+}
+.lights-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--n), 1fr);
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+  aspect-ratio: 1 / 1;
+}
+.light-cell {
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--hairline);
+  background: var(--sunken);
+  transition: background 0.12s ease, box-shadow 0.12s ease, transform 0.08s;
+}
+.light-cell:not(:disabled):active {
+  transform: scale(0.94);
+}
+.light-cell--on {
+  background: var(--c-yellow);
+  border-color: transparent;
+  box-shadow: 0 0 16px 1px var(--c-yellow);
+}
+.lights-grid--won .light-cell {
+  animation: led-flash 0.7s ease-in-out 2;
+}
+
 /* ---- Menu / Settings ---- */
 .menu {
   display: flex;

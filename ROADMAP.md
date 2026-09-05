@@ -44,7 +44,7 @@ son ideas priorizadas de mayor a menor valor / esfuerzo razonable.
 - [x] **Fase A** — refactor a hub: registro de juegos, preferencias globales (tema/idioma/sonido), stats por juego, persistencia migrada y code-splitting. Superdecoder es el primer juego.
 - [x] **Fase B** — Reflejos (test de reacción): panel que se pone verde tras un retardo aleatorio, mide ms, detecta salidas en falso, guarda el mejor tiempo.
 - [x] **Fase C** — Secuencias (Simon): secuencia creciente de LEDs con tono por color; observar y repetir; guarda la mejor ronda.
-- [ ] **Fase D** — Apaga las luces (Lights Out).
+- [x] **Fase D** — Apaga las luces (Lights Out): rejilla 5×5; pulsar alterna la celda y sus vecinas; puzzles siempre resolubles (barajados desde apagado); niveles y récord.
 - [ ] "Palabras / Código numérico" como modo del Superdecoder (reusa `evaluateGuess`).
 
 ### Multijugador

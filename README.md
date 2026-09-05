@@ -19,6 +19,7 @@ inicial se elige el juego. El primero es **Superdecoder** (romper códigos, esti
 - **Superdecoder** — romper un código de 4 colores (Fases 1–3 del documento, abajo).
 - **Reflejos** — test de reacción: toca cuando el panel se ponga verde; mide milisegundos y guarda tu mejor tiempo.
 - **Secuencias** — memoria estilo Simon: observa la secuencia de LEDs (cada color con su tono) y repítela; crece cada ronda y guarda tu mejor ronda.
+- **Apaga las luces** — puzzle Lights Out en rejilla 5×5: pulsar una celda alterna ella y sus vecinas; apaga todas para pasar de nivel. Puzzles siempre resolubles.
 
 ## Superdecoder (Fases 1–3 del documento)
 
