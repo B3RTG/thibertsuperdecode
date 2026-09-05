@@ -15,6 +15,61 @@
   margin: 0 auto;
 }
 
+/* ---- Hub (arcade home) ---- */
+.hub {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  text-align: center;
+  padding-top: clamp(1rem, 6vh, 3rem);
+}
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.75rem;
+}
+.game-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 1.25rem 1rem;
+  min-height: 128px;
+  justify-content: center;
+  border: 1px solid var(--panel-edge);
+  border-radius: var(--radius);
+  background: var(--panel);
+  color: var(--text);
+  border-top: 3px solid var(--card-accent, var(--accent));
+  transition: transform 0.1s, border-color 0.15s, background 0.15s;
+}
+.game-card:active {
+  transform: scale(0.98);
+}
+.game-card:hover {
+  background: var(--selected-bg);
+}
+.game-card__icon {
+  font-size: 2.25rem;
+  line-height: 1;
+}
+.game-card__name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+}
+.game-card__desc {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.btn--small {
+  min-height: 40px;
+  padding: 0 0.9rem;
+  font-size: 0.9rem;
+}
+.loading {
+  min-height: 50vh;
+}
+
 /* ---- Menu / Settings ---- */
 .menu {
   display: flex;

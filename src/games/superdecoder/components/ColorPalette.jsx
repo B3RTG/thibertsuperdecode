@@ -1,7 +1,7 @@
-import { actions } from '../game/reducer.js';
-import { COLOR_CSS_VARS } from '../game/constants.js';
-import { useSound } from '../hooks/useSound.js';
-import { useTexts } from '../i18n/LanguageContext.jsx';
+import { actions } from '../reducer.js';
+import { COLOR_CSS_VARS } from '../constants.js';
+import { useSound } from '../../../hooks/useSound.js';
+import { useTexts } from '../../../i18n/LanguageContext.jsx';
 
 // Color selector input (spec section 7). Only dispatches SET_COLOR — no game
 // logic. Click a color → set the active peg's color.

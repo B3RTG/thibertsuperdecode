@@ -1,8 +1,14 @@
-import { actions } from '../game/reducer.js';
-import { useTexts } from '../i18n/LanguageContext.jsx';
+import { actions } from '../reducer.js';
+import { useTexts } from '../../../i18n/LanguageContext.jsx';
 
 // Choose 1/2 players and difficulty, then start (spec section 6).
-export default function Menu({ state, dispatch, onOpenSettings, onOpenStats }) {
+export default function Menu({
+  state,
+  dispatch,
+  onOpenSettings,
+  onOpenStats,
+  onExit,
+}) {
   const T = useTexts();
   const t = T.menu;
   const { players, mode } = state;
@@ -14,7 +20,12 @@ export default function Menu({ state, dispatch, onOpenSettings, onOpenStats }) {
   return (
     <div className="screen menu">
       <div>
-        <h1 className="menu__title">{T.appTitle}</h1>
+        <button className="btn btn--ghost btn--small" onClick={onExit}>
+          {t.toArcade}
+        </button>
+      </div>
+      <div>
+        <h1 className="menu__title">{T.games.superdecoder.name}</h1>
         <p className="menu__subtitle">{t.subtitle}</p>
       </div>
 

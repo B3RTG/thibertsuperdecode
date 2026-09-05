@@ -1,7 +1,7 @@
 import PegSlot from './PegSlot.jsx';
 import ColorPalette from './ColorPalette.jsx';
-import { actions } from '../game/reducer.js';
-import { useTexts } from '../i18n/LanguageContext.jsx';
+import { actions } from '../reducer.js';
+import { useTexts } from '../../../i18n/LanguageContext.jsx';
 
 // Duo: Player 1 defines the secret in a masked entry (spec section 6.2).
 // The pegs never reveal their color to keep it hidden from Player 2.

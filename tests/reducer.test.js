@@ -3,7 +3,7 @@ import {
   gameReducer,
   createInitialState,
   actions,
-} from '../src/game/reducer.js';
+} from '../src/games/superdecoder/reducer.js';
 
 // Deterministic helper: fill the active row with a specific set of colors.
 function fillRow(state, colors) {

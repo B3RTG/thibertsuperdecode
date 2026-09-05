@@ -4,7 +4,7 @@ import Board from './Board.jsx';
 import ColorPalette from './ColorPalette.jsx';
 import Knob from './Knob.jsx';
 import Controls from './Controls.jsx';
-import { useTexts } from '../i18n/LanguageContext.jsx';
+import { useTexts } from '../../../i18n/LanguageContext.jsx';
 
 // Retro-modern chassis wrapping the play surface (spec section 10).
 export default function DeviceShell({ state, dispatch }) {

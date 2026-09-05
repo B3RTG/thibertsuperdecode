@@ -1,6 +1,6 @@
-import { actions } from '../game/reducer.js';
-import { useTexts } from '../i18n/LanguageContext.jsx';
-import { formatDuration } from '../game/format.js';
+import { actions } from '../reducer.js';
+import { useTexts } from '../../../i18n/LanguageContext.jsx';
+import { formatDuration } from '../format.js';
 
 // Phase 3: 1-player statistics screen.
 export default function StatsScreen({ state, dispatch, onBack }) {

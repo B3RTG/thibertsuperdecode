@@ -1,5 +1,5 @@
-import { actions } from '../game/reducer.js';
-import { useTexts } from '../i18n/LanguageContext.jsx';
+import { actions } from '../reducer.js';
+import { useTexts } from '../../../i18n/LanguageContext.jsx';
 
 // Duo: "pass the device" screen (spec section 6.2). Secret stays hidden.
 export default function HandoffScreen({ dispatch }) {

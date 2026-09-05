@@ -1,41 +1,56 @@
-import { useReducer, useEffect } from 'react';
-import { gameReducer, initialState } from './game/reducer.js';
-import { usePersistence } from './hooks/usePersistence.js';
-import { useKeyboardControls } from './hooks/useKeyboardControls.js';
-import {
-  SoundContext,
-  useSoundApi,
-  useGameSound,
-} from './hooks/useSound.js';
+import { Suspense, useState } from 'react';
+import { PreferencesProvider, usePreferences } from './app/PreferencesContext.jsx';
 import { LanguageProvider } from './i18n/LanguageContext.jsx';
-import SuperDecoder from './components/SuperDecoder.jsx';
+import { SoundContext, useSoundApi } from './hooks/useSound.js';
+import Hub from './app/Hub.jsx';
+import GeneralSettings from './app/GeneralSettings.jsx';
+import { getGame } from './games/registry.js';
 
-// <App> — provides the reducer state and global hooks (spec section 10).
+// <App> — the ThiBert Arcade shell: provides global preferences, wires the
+// shared sound + i18n layers to them, and routes between the hub and a game.
 export default function App() {
-  const [state, dispatch] = useReducer(gameReducer, initialState);
-  usePersistence(state, dispatch);
-  useKeyboardControls(state, dispatch);
+  return (
+    <PreferencesProvider>
+      <Shell />
+    </PreferencesProvider>
+  );
+}
 
-  const sound = useSoundApi(state.muted);
-  useGameSound(state, sound);
+function Shell() {
+  const prefs = usePreferences();
+  const sound = useSoundApi(prefs.muted);
 
-  // Phase 3: apply the selected color theme to the document root.
-  useEffect(() => {
-    document.documentElement.dataset.theme = state.theme || 'classic';
-  }, [state.theme]);
-
-  // i18n: reflect the language on the document root.
-  useEffect(() => {
-    document.documentElement.lang = state.lang || 'es';
-  }, [state.lang]);
+  // Minimal router by state: { screen: 'hub' | 'settings' | 'game', gameId? }.
+  const [route, setRoute] = useState({ screen: 'hub' });
+  const goHub = () => setRoute({ screen: 'hub' });
 
   return (
-    <LanguageProvider lang={state.lang}>
+    <LanguageProvider lang={prefs.lang}>
       <SoundContext.Provider value={sound}>
         <div className="app-root">
-          <SuperDecoder state={state} dispatch={dispatch} />
+          {route.screen === 'hub' && (
+            <Hub
+              onSelect={(gameId) => setRoute({ screen: 'game', gameId })}
+              onOpenSettings={() => setRoute({ screen: 'settings' })}
+            />
+          )}
+          {route.screen === 'settings' && <GeneralSettings onBack={goHub} />}
+          {route.screen === 'game' && (
+            <GameHost gameId={route.gameId} onExit={goHub} />
+          )}
         </div>
       </SoundContext.Provider>
     </LanguageProvider>
+  );
+}
+
+function GameHost({ gameId, onExit }) {
+  const game = getGame(gameId);
+  if (!game) return null;
+  const GameComponent = game.Component;
+  return (
+    <Suspense fallback={<div className="screen loading" aria-busy="true" />}>
+      <GameComponent onExit={onExit} />
+    </Suspense>
   );
 }

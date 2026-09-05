@@ -1,5 +1,5 @@
-import { COLOR_CSS_VARS } from '../game/constants.js';
-import { useTexts } from '../i18n/LanguageContext.jsx';
+import { COLOR_CSS_VARS } from '../constants.js';
+import { useTexts } from '../../../i18n/LanguageContext.jsx';
 
 // A single color slot (spec section 10). Presentation only — dispatches
 // SET_ACTIVE_PEG via onClick when interactive.

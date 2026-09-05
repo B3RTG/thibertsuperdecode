@@ -73,10 +73,7 @@ export function createInitialState(overrides = {}) {
     activeRow: 0,
     activePeg: 0,
     level: 1,
-    muted: false,
     codeSetter: undefined,
-    theme: 'classic',
-    lang: 'es',
     stats: { ...DEFAULT_STATS },
     roundStartedAt: 0,
     lastRoundMs: null, // elapsed time of the round that just ended
@@ -102,10 +99,7 @@ export const actions = {
   resetLevel: () => ({ type: 'RESET_LEVEL' }),
   swapRoles: () => ({ type: 'SWAP_ROLES' }),
   timeUp: () => ({ type: 'TIME_UP' }),
-  toggleMute: () => ({ type: 'TOGGLE_MUTE' }),
   goToMenu: () => ({ type: 'GO_TO_MENU' }),
-  setTheme: (theme) => ({ type: 'SET_THEME', theme }),
-  setLang: (lang) => ({ type: 'SET_LANG', lang }),
   resetStats: () => ({ type: 'RESET_STATS' }),
   hydrate: (persisted) => ({ type: 'HYDRATE', persisted }),
 };
@@ -151,18 +145,9 @@ export function gameReducer(state, action) {
         palette: paletteFor(config.colorCount),
         level: typeof p.level === 'number' ? p.level : state.level,
         mode: p.mode || state.mode,
-        muted: typeof p.muted === 'boolean' ? p.muted : state.muted,
-        theme: p.theme || state.theme,
-        lang: p.lang || state.lang,
         stats: p.stats ? { ...DEFAULT_STATS, ...p.stats } : state.stats,
       };
     }
-
-    case 'SET_THEME':
-      return { ...state, theme: action.theme };
-
-    case 'SET_LANG':
-      return { ...state, lang: action.lang };
 
     case 'RESET_STATS':
       return { ...state, stats: { ...DEFAULT_STATS } };
@@ -340,9 +325,6 @@ export function gameReducer(state, action) {
           : state.stats,
       };
     }
-
-    case 'TOGGLE_MUTE':
-      return { ...state, muted: !state.muted };
 
     case 'GO_TO_MENU':
       return { ...state, phase: 'menu' };

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import { formatDuration } from '../game/format.js';
-import { actions } from '../game/reducer.js';
-import { useTexts } from '../i18n/LanguageContext.jsx';
+import { formatDuration } from '../format.js';
+import { actions } from '../reducer.js';
+import { useTexts } from '../../../i18n/LanguageContext.jsx';
 
 // Phase 3: round timer. Counts UP (elapsed) normally, or DOWN (remaining) in
 // timed mode, firing TIME_UP when the countdown reaches 0. Freezes on won/lost.

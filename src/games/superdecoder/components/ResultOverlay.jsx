@@ -1,7 +1,7 @@
 import PegSlot from './PegSlot.jsx';
-import { actions } from '../game/reducer.js';
-import { useTexts } from '../i18n/LanguageContext.jsx';
-import { formatDuration } from '../game/format.js';
+import { actions } from '../reducer.js';
+import { useTexts } from '../../../i18n/LanguageContext.jsx';
+import { formatDuration } from '../format.js';
 
 // Success / defeat overlay with the next action (spec section 10).
 export default function ResultOverlay({ state, dispatch }) {

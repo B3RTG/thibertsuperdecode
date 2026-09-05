@@ -1,8 +1,8 @@
 import { useRef } from 'react';
-import { actions } from '../game/reducer.js';
-import { COLOR_CSS_VARS } from '../game/constants.js';
-import { useSound } from '../hooks/useSound.js';
-import { useTexts } from '../i18n/LanguageContext.jsx';
+import { actions } from '../reducer.js';
+import { COLOR_CSS_VARS } from '../constants.js';
+import { useSound } from '../../../hooks/useSound.js';
+import { useTexts } from '../../../i18n/LanguageContext.jsx';
 
 // Rotary controller input (spec sections 7 & 11.2). Unifies mouse/touch/pen
 // via Pointer Events. Only dispatches shared actions — no game logic.

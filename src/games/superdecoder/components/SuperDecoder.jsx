@@ -8,7 +8,7 @@ import DeviceShell from './DeviceShell.jsx';
 import ResultOverlay from './ResultOverlay.jsx';
 
 // Switch over `phase` — contains no game rules (spec section 10).
-export default function SuperDecoder({ state, dispatch }) {
+export default function SuperDecoder({ state, dispatch, onExit }) {
   // Menu sub-screen: null | 'settings' | 'stats'.
   const [menuScreen, setMenuScreen] = useState(null);
 
@@ -37,6 +37,7 @@ export default function SuperDecoder({ state, dispatch }) {
         dispatch={dispatch}
         onOpenSettings={() => setMenuScreen('settings')}
         onOpenStats={() => setMenuScreen('stats')}
+        onExit={onExit}
       />
     );
   }

@@ -12,6 +12,27 @@ const es = {
   appTitle: 'ThiBert Superdecoder',
   yes: 'Sí',
   no: 'No',
+  hub: {
+    title: 'ThiBert Arcade',
+    subtitle: 'Elige un juego',
+    settings: 'Ajustes generales',
+    back: 'Arcade',
+  },
+  general: {
+    title: 'Ajustes generales',
+    theme: 'Tema',
+    language: 'Idioma',
+    sound: 'Sonido',
+    on: 'Activado',
+    off: 'Silenciado',
+    back: 'Volver',
+  },
+  games: {
+    superdecoder: {
+      name: 'Superdecoder',
+      desc: 'Rompe el código de colores',
+    },
+  },
   menu: {
     subtitle: 'Rompe el código de 4 colores',
     players: 'Jugadores',
@@ -22,6 +43,7 @@ const es = {
     advanced: 'Avanzado',
     start: 'Empezar',
     settings: 'Ajustes',
+    toArcade: '← Arcade',
   },
   settings: {
     title: 'Ajustes',
@@ -138,6 +160,27 @@ const en = {
   appTitle: 'ThiBert Superdecoder',
   yes: 'Yes',
   no: 'No',
+  hub: {
+    title: 'ThiBert Arcade',
+    subtitle: 'Choose a game',
+    settings: 'General settings',
+    back: 'Arcade',
+  },
+  general: {
+    title: 'General settings',
+    theme: 'Theme',
+    language: 'Language',
+    sound: 'Sound',
+    on: 'On',
+    off: 'Muted',
+    back: 'Back',
+  },
+  games: {
+    superdecoder: {
+      name: 'Superdecoder',
+      desc: 'Crack the color code',
+    },
+  },
   menu: {
     subtitle: 'Crack the 4-color code',
     players: 'Players',
@@ -148,6 +191,7 @@ const en = {
     advanced: 'Advanced',
     start: 'Start',
     settings: 'Settings',
+    toArcade: '← Arcade',
   },
   settings: {
     title: 'Settings',

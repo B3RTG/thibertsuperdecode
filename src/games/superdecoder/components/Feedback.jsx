@@ -1,4 +1,4 @@
-import { useTexts } from '../i18n/LanguageContext.jsx';
+import { useTexts } from '../../../i18n/LanguageContext.jsx';
 
 // Renders hints. Easy → per-position marks; advanced → aggregated counts.
 // (spec section 4). Receives mode + feedback and decides its render.

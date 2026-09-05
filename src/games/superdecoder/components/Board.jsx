@@ -1,5 +1,5 @@
 import GuessRow from './GuessRow.jsx';
-import { useTexts } from '../i18n/LanguageContext.jsx';
+import { useTexts } from '../../../i18n/LanguageContext.jsx';
 
 // The list of rows (spec section 10). Pure presentation from state.
 export default function Board({ state, dispatch }) {

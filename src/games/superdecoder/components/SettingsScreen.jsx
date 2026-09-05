@@ -1,19 +1,9 @@
-import { actions } from '../game/reducer.js';
-import { CONFIG_LIMITS, resolveAllowRepeats, THEMES } from '../game/constants.js';
-import { LANGUAGES } from '../i18n/translations.js';
-import { useTexts } from '../i18n/LanguageContext.jsx';
+import { actions } from '../reducer.js';
+import { CONFIG_LIMITS, resolveAllowRepeats } from '../constants.js';
+import { useTexts } from '../../../i18n/LanguageContext.jsx';
 
-// Accent color per theme, so the swatch previews the theme (mirrors tokens.css).
-const THEME_ACCENTS = {
-  classic: '#FF7A1A',
-  neon: '#ff2fd0',
-  amber: '#ffb300',
-  mint: '#2ee6a0',
-  light: '#eef2f8', // light paper, so the swatch reads as the light theme
-};
-
-// Runtime-configurable settings (spec section 3.1). Changes apply to the
-// next game and are persisted via usePersistence.
+// Per-game settings (spec section 3.1). Changes apply to the next game and are
+// persisted. Global prefs (theme, language, sound) live in General settings.
 export default function SettingsScreen({ state, dispatch, onBack }) {
   const T = useTexts();
   const t = T.settings;
@@ -120,36 +110,6 @@ export default function SettingsScreen({ state, dispatch, onBack }) {
             {stepper('timeLimitSec', 15)}
           </div>
         )}
-        <div className="settings__row">
-          <span className="settings__label">{t.theme}</span>
-          <div className="theme-swatches" role="group" aria-label={t.theme}>
-            {THEMES.map((th) => (
-              <button
-                key={th.id}
-                className="theme-swatch"
-                style={{ '--theme-accent': THEME_ACCENTS[th.id] }}
-                aria-label={T.themes[th.id]}
-                aria-pressed={state.theme === th.id}
-                onClick={() => dispatch(actions.setTheme(th.id))}
-              />
-            ))}
-          </div>
-        </div>
-        <div className="settings__row">
-          <span className="settings__label">{t.language}</span>
-          <div className="choice-group" role="group" aria-label={t.language}>
-            {LANGUAGES.map((lng) => (
-              <button
-                key={lng.id}
-                className="toggle"
-                aria-pressed={state.lang === lng.id}
-                onClick={() => dispatch(actions.setLang(lng.id))}
-              >
-                {lng.label}
-              </button>
-            ))}
-          </div>
-        </div>
       </div>
 
       {repeatsConflict && (

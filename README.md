@@ -1,12 +1,25 @@
-# ThiBert Superdecoder
+# ThiBert Arcade
 
-Juego de romper códigos (estilo *GiiKER Super Decoder*) en React + Vite.
-Implementa las **Fases 1, 2 y 3** de [`doc/super-decoder-especificaciones.md`](doc/super-decoder-especificaciones.md).
+Colección de minijuegos retro en React + Vite (sin backend). Desde un **hub**
+inicial se elige el juego. El primero es **Superdecoder** (romper códigos, estilo
+*GiiKER Super Decoder*); su especificación está en
+[`doc/super-decoder-especificaciones.md`](doc/super-decoder-especificaciones.md).
+
+## Arquitectura de hub
+
+- **Shell** ([src/App.jsx](src/App.jsx)) — preferencias globales + router mínimo (`hub | settings | game`).
+- **Preferencias globales** ([src/app/PreferencesContext.jsx](src/app/PreferencesContext.jsx)) — `theme`, `lang`, `sound`, persistidas en `thibert:prefs` y compartidas por todos los juegos.
+- **Registro de juegos** ([src/games/registry.js](src/games/registry.js)) — añadir un juego = una entrada; cada juego se carga con *code-splitting* (lazy).
+- **Cada juego** vive en `src/games/<id>/` con su propio reducer, estado y persistencia namespaced (`thibert:game:<id>`, incluye sus estadísticas).
+- **Migración** automática desde la clave antigua (`super-decoder:v1`) a la nueva estructura, sin perder progreso/preferencias.
+- **Ajustes** partidos: *Generales* (tema/idioma/sonido, desde el hub) y *del juego* (reglas, dentro de cada juego).
+
+## Superdecoder (Fases 1–3 del documento)
 
 ## Fase 1 (MVP)
 
-- **`src/game/engine.js`** — lógica pura (`generateCode`, `evaluateGuess`, `isSolved`) con manejo correcto de colores repetidos, más tests (`tests/`).
-- **`src/game/reducer.js`** — máquina de estados (`menu → playing → won/lost`, y `settingCode → handoff → playing` en dúo).
+- **`src/games/superdecoder/engine.js`** — lógica pura (`generateCode`, `evaluateGuess`, `isSolved`) con manejo correcto de colores repetidos, más tests (`tests/`).
+- **`src/games/superdecoder/reducer.js`** — máquina de estados (`menu → playing → won/lost`, y `settingCode → handoff → playing` en dúo).
 - **Componentes** — tablero, casillas LED, paleta táctil, pistas en modo **fácil** (por posición) y **avanzado** (conteos agregados), overlays de resultado.
 - **1 y 2 jugadores** (pasar y jugar, con código oculto e intercambio de roles).
 - **Pantalla de Ajustes** — `colorCount`, `maxAttempts`, `codeLength`, `allowRepeats` (persistidos en `localStorage`).

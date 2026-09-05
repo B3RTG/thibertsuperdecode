@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { actions } from '../game/reducer.js';
+import { actions } from './reducer.js';
 
 // Keyboard input adapter (spec section 7): ←/→ move peg, ↑/↓ change color,
 // Enter submit. Only dispatches shared actions — no game logic.

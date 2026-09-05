@@ -1,6 +1,6 @@
 import PegSlot from './PegSlot.jsx';
 import Feedback from './Feedback.jsx';
-import { actions } from '../game/reducer.js';
+import { actions } from '../reducer.js';
 
 // A single board row: active, historic, or future (spec section 10).
 export default function GuessRow({

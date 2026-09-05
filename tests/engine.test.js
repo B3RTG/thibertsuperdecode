@@ -1,5 +1,9 @@
 import { describe, it, expect } from 'vitest';
-import { generateCode, evaluateGuess, isSolved } from '../src/game/engine.js';
+import {
+  generateCode,
+  evaluateGuess,
+  isSolved,
+} from '../src/games/superdecoder/engine.js';
 
 // Helper: assert the section 9.1 invariant that aggregated greens/whites
 // always match the per-position marks.

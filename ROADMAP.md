@@ -40,5 +40,12 @@ son ideas priorizadas de mayor a menor valor / esfuerzo razonable.
 - [ ] CI en GitHub Actions: `npm test` + `npm run build` en cada push/PR.
 - [ ] Migrar la lógica a **TypeScript** (la spec lo recomienda; hoy es JS con las formas de datos de la §8).
 
+### Hub / Arcade (ThiBert Arcade)
+- [x] **Fase A** — refactor a hub: registro de juegos, preferencias globales (tema/idioma/sonido), stats por juego, persistencia migrada y code-splitting. Superdecoder es el primer juego.
+- [ ] **Fase B** — Reflejos (test de reacción).
+- [ ] **Fase C** — Secuencias (Simon).
+- [ ] **Fase D** — Apaga las luces (Lights Out).
+- [ ] "Palabras / Código numérico" como modo del Superdecoder (reusa `evaluateGuess`).
+
 ### Multijugador
 - [ ] Online / por turnos remoto (fuera del alcance v1, requeriría backend).

@@ -1,4 +1,4 @@
-import { useTexts } from '../i18n/LanguageContext.jsx';
+import { useTexts } from '../../../i18n/LanguageContext.jsx';
 
 // Segmented-style display of level and remaining attempts (spec section 10).
 export default function LevelDisplay({ state }) {
