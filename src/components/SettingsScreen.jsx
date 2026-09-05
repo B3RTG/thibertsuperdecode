@@ -9,6 +9,7 @@ const THEME_ACCENTS = {
   neon: '#ff2fd0',
   amber: '#ffb300',
   mint: '#2ee6a0',
+  light: '#eef2f8', // light paper, so the swatch reads as the light theme
 };
 
 // Runtime-configurable settings (spec section 3.1). Changes apply to the

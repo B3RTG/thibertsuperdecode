@@ -21,6 +21,18 @@
   --hint-green: #3ddc84;
   --hint-white: #f2f4f8;
 
+  /* Superficies y líneas semánticas (por defecto: tema oscuro).
+     Se sobreescriben en el tema claro para que todo adapte sin tocar
+     cada componente. */
+  --panel-2: #0f1622; /* segundo tono del chasis (gradiente) */
+  --sunken: #0c121c; /* superficie hundida: casilla vacía, caja de paleta */
+  --hairline: rgba(255, 255, 255, 0.09); /* borde/hairline sutil */
+  --hairline-strong: rgba(255, 255, 255, 0.2);
+  --soft: rgba(255, 255, 255, 0.035); /* overlay suave: fila activa, brillo */
+  --selected-bg: #1a2536; /* fondo de opción seleccionada */
+  --scrim: rgba(6, 10, 18, 0.8); /* fondo del overlay modal */
+  --bg-glow: #17203040; /* halo superior del fondo */
+
   /* espaciado / radios */
   --radius: 14px;
   --radius-sm: 8px;
@@ -57,6 +69,26 @@
   --muted: #7fb9a6;
 }
 
+/* Light theme: overrides chassis tokens AND the semantic surface/line tokens
+   so white-alpha hairlines and deep surfaces adapt. LEDs stay the same. */
+:root[data-theme='light'] {
+  --bg: #f4f6fb;
+  --panel: #ffffff;
+  --panel-edge: #d3dae6;
+  --accent: #ff7a1a;
+  --text: #1b2432;
+  --muted: #5b6879;
+
+  --panel-2: #eef2f8;
+  --sunken: #e4eaf2;
+  --hairline: rgba(0, 0, 0, 0.12);
+  --hairline-strong: rgba(0, 0, 0, 0.22);
+  --soft: rgba(0, 0, 0, 0.05);
+  --selected-bg: #e2ecfb;
+  --scrim: rgba(18, 24, 36, 0.55);
+  --bg-glow: #ff7a1a14;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -70,7 +102,7 @@ body,
 body {
   margin: 0;
   background:
-    radial-gradient(1200px 800px at 50% -10%, #17203040, transparent),
+    radial-gradient(1200px 800px at 50% -10%, var(--bg-glow), transparent),
     var(--bg);
   color: var(--text);
   font-family: var(--font-body);

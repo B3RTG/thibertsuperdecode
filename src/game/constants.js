@@ -64,6 +64,7 @@ export const THEMES = [
   { id: 'neon', label: 'Neón' },
   { id: 'amber', label: 'Ámbar' },
   { id: 'mint', label: 'Menta' },
+  { id: 'light', label: 'Claro' },
 ];
 
 // Phase 3: stats persisted across sessions (1-player).

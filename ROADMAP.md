@@ -20,7 +20,8 @@ son ideas priorizadas de mayor a menor valor / esfuerzo razonable.
 - [ ] Revisión de contraste AA en todos los temas (el tema claro, si se añade, necesita repaso).
 
 ### Temas y visual
-- [ ] **Tema claro** y respeto de `prefers-color-scheme`.
+- [x] **Tema claro** — añadido como quinto tema. (Pendiente: respetar `prefers-color-scheme` automáticamente.)
+- [ ] Detectar `prefers-color-scheme` para elegir claro/oscuro por defecto.
 - [ ] Más temas y/o editor de tema.
 - [ ] Pulido de animaciones (transición entre filas, entrada del overlay).
 

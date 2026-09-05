@@ -47,6 +47,7 @@ const es = {
     neon: 'Neón',
     amber: 'Ámbar',
     mint: 'Menta',
+    light: 'Claro',
   },
   setCode: {
     title: 'Jugador 1: define el código',
@@ -172,6 +173,7 @@ const en = {
     neon: 'Neon',
     amber: 'Amber',
     mint: 'Mint',
+    light: 'Light',
   },
   setCode: {
     title: 'Player 1: set the code',

@@ -58,7 +58,7 @@
 }
 .choice[aria-pressed='true'] {
   border-color: var(--accent);
-  background: #1a2536;
+  background: var(--selected-bg);
   box-shadow: 0 0 0 1px var(--accent) inset;
 }
 .choice:active {
@@ -195,11 +195,11 @@
   width: 100%;
   max-width: 520px;
   margin: 0 auto;
-  background: linear-gradient(180deg, var(--panel), #0f1622);
+  background: linear-gradient(180deg, var(--panel), var(--panel-2));
   border: 1px solid var(--panel-edge);
   border-radius: 22px;
   padding: clamp(0.75rem, 3vw, 1.25rem);
-  box-shadow: 0 20px 60px #0008, 0 0 0 1px #ffffff08 inset;
+  box-shadow: 0 20px 60px #0008, 0 0 0 1px var(--soft) inset;
   display: flex;
   flex-direction: column;
   gap: var(--gap);
@@ -270,7 +270,7 @@
   transition: background 0.2s, opacity 0.2s;
 }
 .row--active {
-  background: #ffffff08;
+  background: var(--soft);
   box-shadow: 0 0 0 1px var(--panel-edge) inset;
 }
 .row--past {
@@ -296,8 +296,8 @@
   width: var(--peg-size);
   height: var(--peg-size);
   border-radius: 50%;
-  border: 2px solid #ffffff14;
-  background: #0c121c;
+  border: 2px solid var(--hairline);
+  background: var(--sunken);
   padding: 0;
   position: relative;
   transition: background 0.18s ease, box-shadow 0.18s ease, transform 0.1s;
@@ -305,7 +305,7 @@
 .peg--filled {
   background: var(--peg-color);
   box-shadow: 0 0 14px 1px var(--peg-color), 0 2px 6px #0006;
-  border-color: #ffffff33;
+  border-color: var(--hairline-strong);
 }
 .peg--active {
   outline: 2px solid var(--accent);
@@ -343,7 +343,7 @@
   height: 12px;
   border-radius: 50%;
   background: transparent;
-  border: 1px solid #ffffff22;
+  border: 1px solid var(--hairline);
 }
 .feedback__dot--green {
   background: var(--hint-green);
@@ -353,7 +353,8 @@
 .feedback__dot--white {
   background: var(--hint-white);
   box-shadow: 0 0 6px #ffffff88;
-  border-color: transparent;
+  /* Keep a ring so the near-white mark stays visible on the light theme */
+  border-color: var(--hairline-strong);
 }
 /* Easy per-position marks align under each peg */
 .feedback--easy.feedback--under {
@@ -393,6 +394,7 @@
 .feedback__chip--white {
   background: var(--hint-white);
   box-shadow: 0 0 6px #ffffff88;
+  border: 1px solid var(--hairline-strong);
 }
 
 /* ---- Color palette ---- */
@@ -402,7 +404,7 @@
   gap: 0.6rem;
   justify-content: center;
   padding: 0.5rem;
-  background: #0c121c;
+  background: var(--sunken);
   border: 1px solid var(--panel-edge);
   border-radius: var(--radius);
 }
@@ -412,7 +414,7 @@
   min-width: 44px;
   min-height: 44px;
   border-radius: 50%;
-  border: 2px solid #ffffff22;
+  border: 2px solid var(--hairline);
   background: var(--swatch-color);
   box-shadow: 0 0 12px var(--swatch-color);
   transition: transform 0.1s;
@@ -447,7 +449,7 @@
   align-items: center;
   justify-content: center;
   padding: var(--gap);
-  background: #060a12cc;
+  background: var(--scrim);
   backdrop-filter: blur(4px);
   z-index: 20;
 }
@@ -565,7 +567,7 @@
     var(--accent);
   border: 3px solid var(--accent);
   box-shadow:
-    0 0 0 4px #0c121c,
+    0 0 0 4px var(--sunken),
     0 8px 20px #0009,
     0 0 24px #ff7a1a44;
   /* Arrastrar para girar no debe hacer scroll de la página (spec 11.2). */
