@@ -70,6 +70,70 @@
   min-height: 50vh;
 }
 
+/* ---- Reflejos (reaction test) ---- */
+.reflejos {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-top: clamp(0.5rem, 3vh, 1.5rem);
+}
+.reflejos__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.reflejos__title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  margin: 0;
+}
+.reaction {
+  width: 100%;
+  min-height: clamp(240px, 45vh, 420px);
+  border-radius: var(--radius);
+  border: 1px solid var(--panel-edge);
+  background: var(--panel);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  text-align: center;
+  padding: 1.5rem;
+  transition: background 0.1s, color 0.1s;
+  user-select: none;
+}
+.reaction__big {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 8vw, 3rem);
+}
+.reaction__hint {
+  color: var(--muted);
+  font-size: 0.95rem;
+  max-width: 22ch;
+}
+.reaction--wait {
+  background: var(--c-red);
+  color: #1a0709;
+}
+.reaction--wait .reaction__hint {
+  color: #1a0709cc;
+}
+.reaction--go {
+  background: var(--hint-green);
+  color: #06180f;
+}
+.reaction--bad {
+  background: #2a1015;
+  color: var(--c-red);
+}
+.reflejos__stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem;
+}
+
 /* ---- Menu / Settings ---- */
 .menu {
   display: flex;

@@ -1,5 +1,6 @@
 import { lazy } from 'react';
 import SuperdecoderIcon from './superdecoder/Icon.jsx';
+import ReflejosIcon from './reflejos/Icon.jsx';
 
 // Game registry — the single source of truth for the hub. Adding a game is
 // adding an entry here; each game module is code-split (lazy) so the bundle
@@ -17,6 +18,12 @@ export const GAMES = [
     Icon: SuperdecoderIcon,
     accent: 'var(--accent)',
     Component: lazy(() => import('./superdecoder/index.jsx')),
+  },
+  {
+    id: 'reflejos',
+    Icon: ReflejosIcon,
+    accent: 'var(--c-cyan)',
+    Component: lazy(() => import('./reflejos/index.jsx')),
   },
 ];
 

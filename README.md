@@ -14,6 +14,11 @@ inicial se elige el juego. El primero es **Superdecoder** (romper códigos, esti
 - **Migración** automática desde la clave antigua (`super-decoder:v1`) a la nueva estructura, sin perder progreso/preferencias.
 - **Ajustes** partidos: *Generales* (tema/idioma/sonido, desde el hub) y *del juego* (reglas, dentro de cada juego).
 
+## Juegos
+
+- **Superdecoder** — romper un código de 4 colores (Fases 1–3 del documento, abajo).
+- **Reflejos** — test de reacción: toca cuando el panel se ponga verde; mide milisegundos y guarda tu mejor tiempo.
+
 ## Superdecoder (Fases 1–3 del documento)
 
 ## Fase 1 (MVP)
