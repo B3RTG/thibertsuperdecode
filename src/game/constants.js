@@ -27,6 +27,8 @@ export const DEFAULT_CONFIG = {
   allowRepeats: null, // null = follow the mode default
   hideKnob: false, // UI preference (spec section 11.2 "ocultar mando")
   scaleByLevel: true, // Phase 3: grow palette with level in 1-player
+  timedMode: false, // Phase 3: countdown that causes a loss at 0
+  timeLimitSec: 60, // seconds per round when timedMode is on
 };
 
 // Per-mode defaults for allowRepeats (spec section 3/5).
@@ -39,6 +41,7 @@ export const CONFIG_LIMITS = {
   colorCount: { min: 4, max: 8 },
   maxAttempts: { min: 4, max: 12 },
   codeLength: { min: 3, max: 6 },
+  timeLimitSec: { min: 15, max: 300 },
 };
 
 // Derive the palette (first N colors) for a given colorCount.

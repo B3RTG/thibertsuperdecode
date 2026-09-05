@@ -27,6 +27,7 @@ Implementa las **Fases 1, 2 y 3** de [`doc/super-decoder-especificaciones.md`](d
 
 - **Escalado de dificultad por nivel** (1 jugador) — la paleta crece +1 color cada 3 niveles (hasta 8). Activable/desactivable en Ajustes (`scaleByLevel`).
 - **Contrarreloj + estadísticas** — cronómetro por ronda en el `DeviceShell` (`Timer`), y pantalla de **Estadísticas** con partidas, ganadas/perdidas, % aciertos, racha, mejor racha, menos intentos y mejor tiempo (persistidas; solo 1 jugador). El overlay muestra el tiempo y avisa de "¡nuevo récord!".
+- **Modo contrarreloj** — toggle `timedMode` con `timeLimitSec` configurable en Ajustes: el cronómetro cuenta hacia atrás, se resalta al bajar de 10s y, al llegar a 0, se pierde la ronda con overlay "¡Se acabó el tiempo!". La detección la hace el `Timer` (despacha `TIME_UP`) porque el reducer es puro.
 - **Temas de color** — Clásico, Neón, Ámbar y Menta, seleccionables en Ajustes y aplicados vía `data-theme` (los LEDs del código no cambian, por consistencia de juego). Persistido.
 
 ## Idiomas (i18n)

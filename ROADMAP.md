@@ -7,7 +7,7 @@ son ideas priorizadas de mayor a menor valor / esfuerzo razonable.
 ## Próximas versiones (ideas)
 
 ### Jugabilidad
-- [ ] **Modo contrarreloj real**: cuenta atrás configurable que provoca derrota al llegar a 0 (hoy el cronómetro solo mide).
+- [x] **Modo contrarreloj**: cuenta atrás configurable (`timedMode` + `timeLimitSec`) que provoca derrota al llegar a 0, con resaltado bajo 10s y overlay "¡Se acabó el tiempo!".
 - [ ] **Dar pista / rendirse**: revelar una casilla a cambio de penalización, o abandonar la ronda.
 - [ ] **Deshacer última casilla** antes de comprobar.
 - [ ] **Semilla compartible**: reproducir un código concreto por código/seed para retar a otra persona.

@@ -51,6 +51,7 @@ function buildRound(state, secret) {
     activeRow: 0,
     activePeg: 0,
     roundStartedAt: now(),
+    timedOut: false,
   };
 }
 
@@ -79,6 +80,7 @@ export function createInitialState(overrides = {}) {
     stats: { ...DEFAULT_STATS },
     roundStartedAt: 0,
     lastRoundMs: null, // elapsed time of the round that just ended
+    timedOut: false, // whether the last loss was by the countdown
     ...overrides,
   };
 }
@@ -99,6 +101,7 @@ export const actions = {
   nextLevel: () => ({ type: 'NEXT_LEVEL' }),
   resetLevel: () => ({ type: 'RESET_LEVEL' }),
   swapRoles: () => ({ type: 'SWAP_ROLES' }),
+  timeUp: () => ({ type: 'TIME_UP' }),
   toggleMute: () => ({ type: 'TOGGLE_MUTE' }),
   goToMenu: () => ({ type: 'GO_TO_MENU' }),
   setTheme: (theme) => ({ type: 'SET_THEME', theme }),
@@ -238,7 +241,7 @@ export function gameReducer(state, action) {
     case 'CONFIRM_HANDOFF': {
       if (state.phase !== 'handoff') return state;
       // Start the timer when the guesser actually begins.
-      return { ...state, phase: 'playing', roundStartedAt: now() };
+      return { ...state, phase: 'playing', roundStartedAt: now(), timedOut: false };
     }
 
     case 'SET_ACTIVE_PEG': {
@@ -301,6 +304,7 @@ export function gameReducer(state, action) {
         activeRow: 0,
         activePeg: 0,
         roundStartedAt: now(),
+        timedOut: false,
       };
     }
 
@@ -316,6 +320,24 @@ export function gameReducer(state, action) {
         guesses: makeGuesses(state.maxAttempts, state.codeLength),
         activeRow: 0,
         activePeg: 0,
+      };
+    }
+
+    case 'TIME_UP': {
+      // Countdown reached 0 → lose the round (spec: modo contrarreloj).
+      if (state.phase !== 'playing') return state;
+      const elapsedMs = state.roundStartedAt
+        ? Math.round(now() - state.roundStartedAt)
+        : null;
+      const trackStats = state.players === 1;
+      return {
+        ...state,
+        phase: 'lost',
+        timedOut: true,
+        lastRoundMs: elapsedMs,
+        stats: trackStats
+          ? updateStats(state.stats, { won: false, attempts: state.maxAttempts })
+          : state.stats,
       };
     }
 

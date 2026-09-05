@@ -9,6 +9,8 @@ export default function ResultOverlay({ state, dispatch }) {
   const t = T.result;
   const won = state.phase === 'won';
   const duo = state.players === 2;
+  // Timed mode: distinguish a countdown loss from running out of attempts.
+  const lostTitle = state.timedOut ? t.timeUp : t.lost;
 
   // Phase 3: show the round time and flag a new best time (1-player win).
   const showTime = !duo && state.lastRoundMs != null;
@@ -21,10 +23,10 @@ export default function ResultOverlay({ state, dispatch }) {
       className={`overlay ${won ? 'overlay--won' : 'overlay--lost'}`}
       role="dialog"
       aria-modal="true"
-      aria-label={won ? t.won : t.lost}
+      aria-label={won ? t.won : lostTitle}
     >
       <div className="overlay__card">
-        <h2 className="overlay__title">{won ? t.won : t.lost}</h2>
+        <h2 className="overlay__title">{won ? t.won : lostTitle}</h2>
 
         {/* Reveal the secret now that the round is over */}
         <div className="overlay__secret" aria-label={t.secretLabel}>

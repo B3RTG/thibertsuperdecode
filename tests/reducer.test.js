@@ -161,6 +161,32 @@ describe('stats (Phase 3)', () => {
     expect(s.stats.played).toBe(0);
   });
 
+  it('TIME_UP loses the round and flags timedOut (1-player stats counted)', () => {
+    let s = gameReducer(createInitialState(), actions.newGame(1, 'easy'));
+    expect(s.timedOut).toBe(false);
+    s = gameReducer(s, actions.timeUp());
+    expect(s.phase).toBe('lost');
+    expect(s.timedOut).toBe(true);
+    expect(s.stats.lost).toBe(1);
+  });
+
+  it('TIME_UP is ignored when not playing', () => {
+    let s = gameReducer(createInitialState(), actions.newGame(1, 'easy'));
+    s = fillRow(s, s.secret);
+    s = gameReducer(s, actions.submitGuess()); // won
+    const before = s;
+    s = gameReducer(s, actions.timeUp());
+    expect(s).toBe(before); // no-op
+  });
+
+  it('starting a new round clears timedOut', () => {
+    let s = gameReducer(createInitialState(), actions.newGame(1, 'easy'));
+    s = gameReducer(s, actions.timeUp()); // lost, timedOut true
+    s = gameReducer(s, actions.resetLevel());
+    expect(s.phase).toBe('playing');
+    expect(s.timedOut).toBe(false);
+  });
+
   it('RESET_STATS clears everything', () => {
     let s = gameReducer(createInitialState(), actions.newGame(1, 'easy'));
     s = fillRow(s, s.secret);

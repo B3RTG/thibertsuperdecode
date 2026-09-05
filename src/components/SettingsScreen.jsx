@@ -20,7 +20,7 @@ export default function SettingsScreen({ state, dispatch, onBack }) {
 
   const patch = (p) => dispatch(actions.updateConfig(p));
 
-  const stepper = (key) => {
+  const stepper = (key, step = 1) => {
     const { min, max } = CONFIG_LIMITS[key];
     return (
       <div className="stepper">
@@ -28,7 +28,7 @@ export default function SettingsScreen({ state, dispatch, onBack }) {
           className="stepper__btn"
           aria-label={t.less(key)}
           disabled={config[key] <= min}
-          onClick={() => patch({ [key]: Math.max(min, config[key] - 1) })}
+          onClick={() => patch({ [key]: Math.max(min, config[key] - step) })}
         >
           −
         </button>
@@ -39,7 +39,7 @@ export default function SettingsScreen({ state, dispatch, onBack }) {
           className="stepper__btn"
           aria-label={t.more(key)}
           disabled={config[key] >= max}
-          onClick={() => patch({ [key]: Math.min(max, config[key] + 1) })}
+          onClick={() => patch({ [key]: Math.min(max, config[key] + step) })}
         >
           +
         </button>
@@ -103,6 +103,22 @@ export default function SettingsScreen({ state, dispatch, onBack }) {
             {config.scaleByLevel ? T.yes : T.no}
           </button>
         </div>
+        <div className="settings__row">
+          <span className="settings__label">{t.timedMode}</span>
+          <button
+            className="toggle"
+            aria-pressed={config.timedMode === true}
+            onClick={() => patch({ timedMode: !config.timedMode })}
+          >
+            {config.timedMode ? T.yes : T.no}
+          </button>
+        </div>
+        {config.timedMode && (
+          <div className="settings__row">
+            <span className="settings__label">{t.timeLimit}</span>
+            {stepper('timeLimitSec', 15)}
+          </div>
+        )}
         <div className="settings__row">
           <span className="settings__label">{t.theme}</span>
           <div className="theme-swatches" role="group" aria-label={t.theme}>

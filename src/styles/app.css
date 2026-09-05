@@ -234,6 +234,26 @@
   color: var(--accent);
   text-shadow: 0 0 12px #ff7a1a66;
 }
+/* Timed mode: countdown running low */
+.level-display__value--low {
+  color: var(--c-red);
+  text-shadow: 0 0 12px var(--c-red);
+  animation: low-time-pulse 1s ease-in-out infinite;
+}
+@keyframes low-time-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .level-display__value--low {
+    animation: none;
+  }
+}
 
 /* ---- Board ---- */
 .board {

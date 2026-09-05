@@ -15,7 +15,7 @@ export default function DeviceShell({ state, dispatch }) {
     <div className="device">
       <div className="device__topbar">
         <LevelDisplay state={state} />
-        <Timer state={state} />
+        <Timer state={state} dispatch={dispatch} />
         <div className="level-display__item" style={{ alignItems: 'flex-end' }}>
           <span className="level-display__label">{T.board.mode}</span>
           <span className="level-display__value" style={{ fontSize: '1rem' }}>
