@@ -54,6 +54,8 @@ export function useSoundApi(muted) {
         beep(300, 0.14, 'square', 0.06, 0);
         beep(220, 0.22, 'square', 0.06, 0.14);
       },
+      // Generic pitched tone (e.g. Simon pads).
+      tone: (freq, dur = 0.2) => beep(freq, dur, 'sine', 0.07),
     };
   }, []);
 }

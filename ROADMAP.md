@@ -43,7 +43,7 @@ son ideas priorizadas de mayor a menor valor / esfuerzo razonable.
 ### Hub / Arcade (ThiBert Arcade)
 - [x] **Fase A** — refactor a hub: registro de juegos, preferencias globales (tema/idioma/sonido), stats por juego, persistencia migrada y code-splitting. Superdecoder es el primer juego.
 - [x] **Fase B** — Reflejos (test de reacción): panel que se pone verde tras un retardo aleatorio, mide ms, detecta salidas en falso, guarda el mejor tiempo.
-- [ ] **Fase C** — Secuencias (Simon).
+- [x] **Fase C** — Secuencias (Simon): secuencia creciente de LEDs con tono por color; observar y repetir; guarda la mejor ronda.
 - [ ] **Fase D** — Apaga las luces (Lights Out).
 - [ ] "Palabras / Código numérico" como modo del Superdecoder (reusa `evaluateGuess`).
 
